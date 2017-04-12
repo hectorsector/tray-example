@@ -7,18 +7,31 @@ let tray = undefined
 let window = undefined
 
 // Don't show the app in the doc
-app.dock.hide()
+/*if (process.platform === 'darwin') {
+  app.dock.hide()
+}*/
 
+/*
 app.on('ready', () => {
   createTray()
   createWindow()
 })
+*/
+var menubar = require('menubar')
 
-// Quit the app when the window is closed
-app.on('window-all-closed', () => {
-  app.quit()
+var mb = menubar()
+
+mb.on('ready', function ready () {
+  console.log('app is ready')
+  // your app code here
 })
 
+// Quit the app when the window is closed
+/*app.on('window-all-closed', () => {
+  app.quit()
+})*/
+
+/*
 const createTray = () => {
   tray = new Tray(path.join(assetsDirectory, 'sunTemplate.png'))
   tray.on('right-click', toggleWindow)
@@ -31,8 +44,8 @@ const createTray = () => {
       window.openDevTools({mode: 'detach'})
     }
   })
-}
-
+}*/
+/*
 const getWindowPosition = () => {
   const windowBounds = window.getBounds()
   const trayBounds = tray.getBounds()
@@ -44,16 +57,16 @@ const getWindowPosition = () => {
   const y = Math.round(trayBounds.y + trayBounds.height + 4)
 
   return {x: x, y: y}
-}
-
+}*/
+/*
 const createWindow = () => {
   window = new BrowserWindow({
     width: 300,
     height: 450,
-    show: false,
+    show: true,
     frame: false,
     fullscreenable: false,
-    resizable: false,
+    resizable: true,
     transparent: true,
     webPreferences: {
       // Prevents renderer process code from not running when window is
@@ -69,8 +82,8 @@ const createWindow = () => {
       window.hide()
     }
   })
-}
-
+}*/
+/*
 const toggleWindow = () => {
   if (window.isVisible()) {
     window.hide()
@@ -84,12 +97,13 @@ const showWindow = () => {
   window.setPosition(position.x, position.y, false)
   window.show()
   window.focus()
-}
+}*/
 
+/*
 ipcMain.on('show-window', () => {
   showWindow()
-})
-
+})*/
+/*
 ipcMain.on('weather-updated', (event, weather) => {
   // Show "feels like" temperature in tray
   tray.setTitle(`${Math.round(weather.currently.apparentTemperature)}°`)
@@ -121,4 +135,4 @@ ipcMain.on('weather-updated', (event, weather) => {
     default:
       tray.setImage(path.join(assetsDirectory, 'sunTemplate.png'))
   }
-})
+})*/
